@@ -140,7 +140,7 @@
 
     <div class="result-card" id="resultCard">
         <div>Tahmini LGS Puanınız</div>
-        <div class="result-score" id="totalScore">0.00</div>
+        <div class="result-score" id="totalScore">100.00</div>
         <div class="result-nets" id="totalNet">Toplam Net: 0.00 / 100</div>
     </div>
 </div>
@@ -195,9 +195,11 @@
             totalWeightedNets += net * l.coef;
         });
 
-      
+        let score = totalWeightedNets + 194.76;
+        
+        // Puan sınırlandırmaları (Minimum 100, Maksimum 500)
+        if (score < 100) score = 100;
         if (score > 500) score = 500;
-        if (totalNetCount === 0) score = 0;
 
         document.getElementById('totalScore').innerText = score.toFixed(2);
         document.getElementById('totalNet').innerText = `Toplam Net: ${totalNetCount.toFixed(2)} / 100`;
